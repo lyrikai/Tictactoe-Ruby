@@ -1,10 +1,13 @@
 class Application
 
-    attr_accessor :p2name, :p1name
+    attr_accessor :p2name, :p1name, :round
+
+    @round = 0
 
     def run
         hello
         choise_name
+        rounding 
         first_game
         replay
         bye
@@ -52,11 +55,17 @@ class Application
         input = gets.chomp
         if input == "y"
             puts `clear`
+            rounding
             gogame = Board.new(@p1name, @p2name)
             gogame.run
             replay
         else
         end
+    end
+
+    def rounding 
+        @round =  @round.to_i + 1
+        puts "Round n° #{@round}" 
     end
 
 end
